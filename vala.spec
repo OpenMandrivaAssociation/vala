@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.0.8
+%define version 0.0.9
 %define release %mkrel 1
 
 %define major 0
@@ -19,7 +19,6 @@ BuildRequires: flex
 BuildRequires: bison
 
 %description
-
 Vala is a new programming language that aims to bring modern
 programming language features to GNOME developers without imposing any
 additional runtime requirements and without using a different ABI
@@ -118,5 +117,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS MAINTAINERS NEWS README
 %_bindir/valac
 %_datadir/%name
-
-
+%_mandir/man1/valac.1*

@@ -1,9 +1,10 @@
 %define name vala
-%define version 0.1.1
+%define version 0.1.2
 %define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %name %major
+%define libnamedev %mklibname -d %name
 
 Summary: Compiler for the GObject type system
 Name: %{name}
@@ -69,15 +70,16 @@ Summary: Vala runtime library
 %description -n %libname
 This is the runtime library of the Vala programming language.
 
-%package -n %libname-devel
+%package -n %libnamedev
 Group: Development/Other
 Summary: Vala development files
 Requires: %libname = %version
 Requires: %name = %version
 Provides: libvala-devel = %version-%release
 Provides: vala-devel = %version-%release
+Obsoletes: %mklibname -d vala 0
 
-%description -n %libname-devel
+%description -n %libnamedev
 This is the development library of the Vala programming language.
 
 %prep
@@ -104,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %_libdir/libvala.so.%{major}*
 
-%files -n %libname-devel
+%files -n %libnamedev
 %defattr(-,root,root)
 %doc ChangeLog
 %_libdir/libvala.so

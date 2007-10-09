@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.1.3
+%define version 0.1.4
 %define release %mkrel 1
 
 %define major 0
@@ -113,6 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/libvala.la
 %_includedir/vala-1.0
 %_libdir/pkgconfig/vala-1.0.pc
+%_datadir/devhelp/books/vala
 
 %files
 %defattr(-,root,root)

@@ -14,7 +14,6 @@ Source0: http://www.paldo.org/vala/%{name}-%{version}.tar.bz2
 License: LGPL
 Group: Development/Other
 Url: http://live.gnome.org/Vala
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: glib2-devel
 BuildRequires: flex
 BuildRequires: bison

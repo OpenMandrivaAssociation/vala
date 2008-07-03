@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.2.0
+%define version 0.3.4
 %define release %mkrel 1
 
 %define major 0
@@ -11,7 +11,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://www.paldo.org/vala/%{name}-%{version}.tar.bz2
-License: LGPL
+# Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
+License: LGPLv2+ and BSD
 Group: Development/Other
 Url: http://live.gnome.org/Vala
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot

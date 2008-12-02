@@ -11,6 +11,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.bz2
+# http://bugzilla.gnome.org/show_bug.cgi?id=562951
+Patch: vala-0.5.2-fix-checks.patch
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
@@ -85,6 +87,7 @@ This is the development library of the Vala programming language.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %configure2_5x

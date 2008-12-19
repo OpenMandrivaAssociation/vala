@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.5.2
+%define version 0.5.3
 %define release %mkrel 1
 
 %define major 0
@@ -11,6 +11,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.bz2
+Patch: vala-0.5.3-format-strings.patch
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
@@ -85,6 +86,7 @@ This is the development library of the Vala programming language.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %configure2_5x

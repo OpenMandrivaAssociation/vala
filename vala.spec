@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.5.7
+%define version 0.6.0
 %define release %mkrel 1
 
 %define major 0

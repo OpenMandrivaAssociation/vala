@@ -1,6 +1,6 @@
 %define name vala
 %define version 0.7.2
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %name %major
@@ -19,6 +19,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: glib2-devel
 BuildRequires: flex
 BuildRequires: bison
+Requires: glib2-devel
 
 %description
 Vala is a new programming language that aims to bring modern
@@ -95,8 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 %check
-# http://bugzilla.gnome.org/show_bug.cgi?id=562951
-#make check
+make check
 
 %clean
 rm -rf $RPM_BUILD_ROOT

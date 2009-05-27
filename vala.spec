@@ -19,6 +19,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: glib2-devel
 BuildRequires: flex
 BuildRequires: bison
+#gw for make check: 
+BuildRequires: dbus-glib-devel
 Requires: glib2-devel
 
 %description

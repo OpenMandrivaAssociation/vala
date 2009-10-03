@@ -1,6 +1,6 @@
 %define name vala
 %define version 0.7.7
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %name %major
@@ -11,6 +11,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.bz2
+Patch0: vala-0.7.7-format-security.patch
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
@@ -86,11 +87,22 @@ Obsoletes: %mklibname -d vala 0
 %description -n %libnamedev
 This is the development library of the Vala programming language.
 
+%package tools
+Summary: Tools for creating projects and bindings for %{name}
+Group: Development/Other
+Requires: %{name} = %{version}-%{release}
+Requires: gnome-common intltool libtool
+
+%description tools
+This package contains tools to generate Vala projects, as well as API bindings
+from existing C libraries, allowing access from Vala programs.
+
 %prep
 %setup -q
+%apply_patches
 
 %build
-%configure2_5x
+%configure2_5x --enable-vapigen
 %make
 
 %install
@@ -129,3 +141,10 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/valac
 %_datadir/%name
 %_mandir/man1/valac.1*
+
+%files tools
+%defattr(-,root,root)
+%{_bindir}/*gen*
+%{_bindir}/vapicheck
+%{_libdir}/vala
+%{_mandir}/*/*gen*

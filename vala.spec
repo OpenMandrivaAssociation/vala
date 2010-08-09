@@ -1,9 +1,10 @@
 %define name vala
-%define version 0.9.4
+%define version 0.9.5
 %define release %mkrel 1
 
+%define api 0.10
 %define major 0
-%define libname %mklibname %name %major
+%define libname %mklibname %name %api %major
 %define libnamedev %mklibname -d %name
 
 Summary: Compiler for the GObject type system
@@ -124,28 +125,33 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %libname
 %defattr(-,root,root)
-%_libdir/libvala.so.%{major}*
+%_libdir/libvala-%api.so.%{major}*
 
 %files -n %libnamedev
 %defattr(-,root,root)
 %doc ChangeLog
-%_libdir/libvala.so
-%_libdir/libvala.la
-%_includedir/vala-1.0
-%_libdir/pkgconfig/vala-1.0.pc
-%_datadir/devhelp/books/vala
+%_libdir/libvala-%api.so
+%_libdir/libvala-%api.la
+%_includedir/vala-%api
+%_libdir/pkgconfig/vala-%api.pc
+%_datadir/devhelp/books/vala-%api
+%_datadir/aclocal/vala.m4
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS MAINTAINERS NEWS README
 %_bindir/vala
+%_bindir/vala-%api
 %_bindir/valac
-%_datadir/%name
+%_bindir/valac-%api
+%_datadir/vala-%api
 %_mandir/man1/valac.1*
+%_mandir/man1/valac-%api.1*
 
 %files tools
 %defattr(-,root,root)
 %{_bindir}/*gen*
 %{_bindir}/vapicheck
-%{_libdir}/vala
+%{_bindir}/vapicheck-%api
+%{_libdir}/vala-%api
 %{_mandir}/*/*gen*

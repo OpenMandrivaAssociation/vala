@@ -1,5 +1,5 @@
 %define name vala
-%define version 0.9.8
+%define version 0.10.0
 %define release %mkrel 1
 
 %define api 0.10

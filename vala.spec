@@ -108,6 +108,7 @@ from existing C libraries, allowing access from Vala programs.
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
+mkdir -p %buildroot%_datadir/vala/vapi
 
 %check
 #gw checks don't run in iurt
@@ -145,6 +146,8 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/valac
 %_bindir/valac-%api
 %_datadir/vala-%api
+%dir %_datadir/vala
+%dir %_datadir/vala/vapi
 %_mandir/man1/valac.1*
 %_mandir/man1/valac-%api.1*
 

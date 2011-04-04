@@ -1,8 +1,8 @@
 %define name vala
-%define version 0.10.4
+%define version 0.12.0
 %define release %mkrel 1
 
-%define api 0.10
+%define api 0.12
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedev %mklibname -d %name
@@ -108,6 +108,7 @@ from existing C libraries, allowing access from Vala programs.
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
+
 mkdir -p %buildroot%_datadir/vala/vapi
 
 %check
@@ -134,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/libvala-%api.so
 %_libdir/libvala-%api.la
 %_includedir/vala-%api
-%_libdir/pkgconfig/vala-%api.pc
+%_libdir/pkgconfig/libvala-%api.pc
 %_datadir/devhelp/books/vala-%api
 %_datadir/aclocal/vala.m4
 

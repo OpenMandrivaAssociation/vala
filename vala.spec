@@ -1,8 +1,8 @@
 %define name vala
-%define version 0.13.0
+%define version 0.12.1
 %define release %mkrel 1
 
-%define api 0.14
+%define api 0.12
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedev %mklibname -d %name
@@ -11,7 +11,7 @@ Summary: Compiler for the GObject type system
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.bz2
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other

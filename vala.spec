@@ -1,6 +1,6 @@
 %define name vala
 %define version 0.12.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define api 0.12
 %define major 0
@@ -117,13 +117,6 @@ mkdir -p %buildroot%_datadir/vala/vapi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
 
 %files -n %libname
 %defattr(-,root,root)

@@ -1,28 +1,25 @@
-%define name vala
-%define version 0.12.1
-%define release %mkrel 3
-
-%define api 0.12
+%define api 0.14
 %define major 0
 %define libname %mklibname %name %api %major
 %define libnamedev %mklibname -d %name
 
 Summary: Compiler for the GObject type system
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: vala
+Version: 0.14.0
+Release: 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
 Url: http://live.gnome.org/Vala
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: glib2-devel >= 2.25
+
+BuildRequires: pkgconfig(glib-2.0) >= 2.25
 BuildRequires: flex
 BuildRequires: bison
 #gw for make check: 
 BuildRequires: dbus-glib-devel
-Requires: glib2-devel
+# and why would this be needed for the main app?
+#Requires: glib2-devel
 
 %description
 Vala is a new programming language that aims to bring modern
@@ -106,7 +103,7 @@ from existing C libraries, allowing access from Vala programs.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 mkdir -p %buildroot%_datadir/vala/vapi
@@ -115,15 +112,10 @@ mkdir -p %buildroot%_datadir/vala/vapi
 #gw checks don't run in iurt
 #make check
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -n %libname
-%defattr(-,root,root)
 %_libdir/libvala-%api.so.%{major}*
 
 %files -n %libnamedev
-%defattr(-,root,root)
 %doc ChangeLog
 %_libdir/libvala-%api.so
 %_libdir/libvala-%api.la
@@ -133,7 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/aclocal/vala.m4
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS MAINTAINERS NEWS README
 %_bindir/vala
 %_bindir/vala-%api
@@ -146,7 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %_mandir/man1/valac-%api.1*
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/*gen*
 %{_bindir}/vapicheck
 %{_bindir}/vapicheck-%api

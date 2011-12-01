@@ -5,7 +5,7 @@
 
 Summary: Compiler for the GObject type system
 Name: vala
-Version: 0.14.0
+Version: 0.14.1
 Release: 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD

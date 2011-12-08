@@ -89,7 +89,9 @@ This is the development library of the Vala programming language.
 Summary: Tools for creating projects and bindings for %{name}
 Group: Development/Other
 Requires: %{name} = %{version}-%{release}
-Requires: gnome-common intltool libtool
+Requires: gnome-common
+Requires: intltool
+Requires: libtool
 
 %description tools
 This package contains tools to generate Vala projects, as well as API bindings

@@ -1,25 +1,28 @@
 %define api 0.14
 %define major 0
-%define libname %mklibname %name %api %major
-%define libnamedev %mklibname -d %name
+%define libname %mklibname %{name} %{api} %major
+%define develname %mklibname -d %{name}
+
+#gw checks don't run in iurt
+%define with_check 0
 
 Summary: Compiler for the GObject type system
 Name: vala
 Version: 0.14.1
-Release: 1
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
+Release: 2
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
 Url: http://live.gnome.org/Vala
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
 
-BuildRequires: pkgconfig(glib-2.0) >= 2.25
-BuildRequires: flex
 BuildRequires: bison
+BuildRequires: flex
+BuildRequires: pkgconfig(glib-2.0) >= 2.25
+%if %{with_check}
 #gw for make check: 
-BuildRequires: dbus-glib-devel
-# and why would this be needed for the main app?
-#Requires: glib2-devel
+BuildRequires: pkgconfig(dbus-glib-1)
+%endif
 
 %description
 Vala is a new programming language that aims to bring modern
@@ -65,23 +68,21 @@ libraries from applications written in e.g. C# as the Vala parser is written
 as a library, so that all compile-time information is available when
 generating a binding.
 
-%package -n %libname
+%package -n %{libname}
 Group: System/Libraries
 Summary: Vala runtime library
 
-%description -n %libname
+%description -n %{libname}
 This is the runtime library of the Vala programming language.
 
-%package -n %libnamedev
+%package -n %{develname}
 Group: Development/Other
 Summary: Vala development files
-Requires: %libname = %version
-Requires: %name = %version
-Provides: libvala-devel = %version-%release
-Provides: vala-devel = %version-%release
+Requires: %{libname} = %{version}-%{release}
+Provides: vala-devel = %{version}-%{release}
 Obsoletes: %mklibname -d vala 0
 
-%description -n %libnamedev
+%description -n %{develname}
 This is the development library of the Vala programming language.
 
 %package tools
@@ -99,46 +100,50 @@ from existing C libraries, allowing access from Vala programs.
 %apply_patches
 
 %build
-%configure2_5x --enable-vapigen
+%configure2_5x \
+	--enable-vapigen
+
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+find %{buildroot} -name "*.la" -delete
 
-mkdir -p %buildroot%_datadir/vala/vapi
+mkdir -p %{buildroot}%{_datadir}/vala/vapi
 
+%if %{with_check}
 %check
-#gw checks don't run in iurt
-#make check
-
-%files -n %libname
-%_libdir/libvala-%api.so.%{major}*
-
-%files -n %libnamedev
-%doc ChangeLog
-%_libdir/libvala-%api.so
-%_libdir/libvala-%api.la
-%_includedir/vala-%api
-%_libdir/pkgconfig/libvala-%api.pc
-%_datadir/devhelp/books/vala-%api
-%_datadir/aclocal/vala.m4
+%make check
+%endif
 
 %files
-%doc AUTHORS MAINTAINERS NEWS README
-%_bindir/vala
-%_bindir/vala-%api
-%_bindir/valac
-%_bindir/valac-%api
-%_datadir/vala-%api
-%dir %_datadir/vala
-%dir %_datadir/vala/vapi
-%_mandir/man1/valac.1*
-%_mandir/man1/valac-%api.1*
+%doc NEWS README
+%{_bindir}/vala
+%{_bindir}/vala-%{api}
+%{_bindir}/valac
+%{_bindir}/valac-%{api}
+%{_datadir}/vala-%{api}
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_mandir}/man1/valac.1*
+%{_mandir}/man1/valac-%{api}.1*
+
+%files -n %{libname}
+%{_libdir}/libvala-%{api}.so.%{major}*
+
+%files -n %{develname}
+%doc ChangeLog AUTHORS MAINTAINERS
+%{_libdir}/libvala-%{api}.so
+%{_includedir}/vala-%{api}
+%{_libdir}/pkgconfig/libvala-%{api}.pc
+%{_datadir}/devhelp/books/vala-%{api}
+%{_datadir}/aclocal/vala.m4
 
 %files tools
 %{_bindir}/*gen*
 %{_bindir}/vapicheck
-%{_bindir}/vapicheck-%api
-%{_libdir}/vala-%api
+%{_bindir}/vapicheck-%{api}
+%{_libdir}/vala-%{api}
 %{_mandir}/*/*gen*
+

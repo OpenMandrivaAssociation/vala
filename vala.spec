@@ -1,4 +1,6 @@
-%define api 0.14
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
+%define api 0.16
 %define major 0
 %define libname %mklibname %{name} %{api} %major
 %define develname %mklibname -d %{name}
@@ -8,13 +10,13 @@
 
 Summary: Compiler for the GObject type system
 Name: vala
-Version: 0.14.2
+Version: 0.16.0
 Release: 1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License: LGPLv2+ and BSD
 Group: Development/Other
 Url: http://live.gnome.org/Vala
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires: bison
 BuildRequires: flex
@@ -136,16 +138,18 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 
 %files -n %{develname}
 %doc ChangeLog AUTHORS MAINTAINERS
-%{_libdir}/libvala-%{api}.so
 %{_includedir}/vala-%{api}
-%{_libdir}/pkgconfig/libvala-%{api}.pc
+%{_libdir}/libvala-%{api}.so
+%{_libdir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
-%{_datadir}/aclocal/vala.m4
+%{_datadir}/aclocal/*.m4
 
 %files tools
 %{_bindir}/*gen*
 %{_bindir}/vapicheck
 %{_bindir}/vapicheck-%{api}
+%{_datadir}/vala/Makefile.vapigen
 %{_libdir}/vala-%{api}
 %{_mandir}/*/*gen*
 

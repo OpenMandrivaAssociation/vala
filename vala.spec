@@ -1,29 +1,28 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api 0.18
-%define major 0
-%define libname %mklibname %{name} %{api} %major
-%define develname %mklibname -d %{name}
+%define api	0.18
+%define major	0
+%define libname	%mklibname %{name} %{api} %major
+%define	devname	%mklibname -d %{name}
 
 #gw checks don't run in iurt
-%define with_check 0
+%define	with_check 0
 
-Summary: Compiler for the GObject type system
-Name: vala
-Version: 0.17.0
-Release: 1
+Summary:	Compiler for the GObject type system
+Name:		vala
+Version:	0.17.2
+Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
-License: LGPLv2+ and BSD
-Group: Development/Other
-Url: http://live.gnome.org/Vala
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
+License:	LGPLv2+ and BSD
+Group:		Development/Other
+Url:		http://live.gnome.org/Vala
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires: bison
-BuildRequires: flex
-BuildRequires: pkgconfig(glib-2.0) >= 2.25
+BuildRequires:	bison
+BuildRequires:	flex
+BuildRequires:	pkgconfig(glib-2.0) >= 2.25
 %if %{with_check}
-#gw for make check: 
-BuildRequires: pkgconfig(dbus-glib-1)
+BuildRequires:	pkgconfig(dbus-glib-1)
 %endif
 
 %description
@@ -71,29 +70,29 @@ as a library, so that all compile-time information is available when
 generating a binding.
 
 %package -n %{libname}
-Group: System/Libraries
-Summary: Vala runtime library
+Group:		System/Libraries
+Summary:	Vala runtime library
 
 %description -n %{libname}
 This is the runtime library of the Vala programming language.
 
-%package -n %{develname}
-Group: Development/Other
-Summary: Vala development files
-Requires: %{libname} = %{version}-%{release}
-Provides: vala-devel = %{version}-%{release}
-Obsoletes: %mklibname -d vala 0
+%package -n %{devname}
+Group:		Development/Other
+Summary:	Vala development files
+Requires:	%{libname} = %{version}-%{release}
+Provides:	vala-devel = %{version}-%{release}
+Obsoletes:	%mklibname -d vala 0
 
-%description -n %{develname}
+%description -n %{devname}
 This is the development library of the Vala programming language.
 
 %package tools
-Summary: Tools for creating projects and bindings for %{name}
-Group: Development/Other
-Requires: %{name} = %{version}-%{release}
-Requires: gnome-common
-Requires: intltool
-Requires: libtool
+Summary:	Tools for creating projects and bindings for %{name}
+Group:		Development/Other
+Requires:	%{name} = %{version}-%{release}
+Requires:	gnome-common
+Requires:	intltool
+Requires:	libtool
 
 %description tools
 This package contains tools to generate Vala projects, as well as API bindings
@@ -110,7 +109,6 @@ from existing C libraries, allowing access from Vala programs.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 find %{buildroot} -name "*.la" -delete
 
@@ -136,7 +134,7 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{libname}
 %{_libdir}/libvala-%{api}.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %doc ChangeLog AUTHORS MAINTAINERS
 %{_includedir}/vala-%{api}
 %{_libdir}/libvala-%{api}.so

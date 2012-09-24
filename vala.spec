@@ -5,16 +5,17 @@
 
 #gw checks don't run in iurt
 %define	with_check 0
+%define short_ver 0.17
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.17.6
+Version:	0.17.7
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
 Url:		http://live.gnome.org/Vala
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{short_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	bison
 BuildRequires:	flex

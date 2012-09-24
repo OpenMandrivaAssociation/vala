@@ -1,3 +1,6 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
+
 %define api	0.18
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
@@ -5,7 +8,6 @@
 
 #gw checks don't run in iurt
 %define	with_check 0
-%define short_ver 0.17
 
 Summary:	Compiler for the GObject type system
 Name:		vala
@@ -15,7 +17,7 @@ Release:	1
 License:	LGPLv2+ and BSD
 Group:		Development/Other
 Url:		http://live.gnome.org/Vala
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{short_ver}/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	bison
 BuildRequires:	flex

@@ -1,2 +1,4 @@
+---
 sources:
-  "vala-0.18.0.tar.xz:"	1ea1e46064992eaf34be81c06ef1fa8394e32c75
+  vala-0.18.0.tar.xz: 1ea1e46064992eaf34be81c06ef1fa8394e32c75
+  vala-0.18.1.tar.xz: c6d24efb9a093b7b67b876b484c612a5af90b9bb

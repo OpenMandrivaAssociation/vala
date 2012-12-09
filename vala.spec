@@ -11,7 +11,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.18.0
+Version:	0.18.1
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
@@ -82,6 +82,7 @@ This is the runtime library of the Vala programming language.
 Group:		Development/Other
 Summary:	Vala development files
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 Provides:	vala-devel = %{version}-%{release}
 Obsoletes:	%mklibname -d vala 0
 

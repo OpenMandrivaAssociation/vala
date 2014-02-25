@@ -6,8 +6,7 @@
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
 
-#gw checks don't run in iurt
-%bcond_with	check
+%bcond_without	check
 
 Summary:	Compiler for the GObject type system
 Name:		vala

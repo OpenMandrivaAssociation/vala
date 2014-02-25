@@ -7,7 +7,7 @@
 %define	devname	%mklibname -d %{name}
 
 #gw checks don't run in iurt
-%define	with_check 0
+%bcond_with	check
 
 Summary:	Compiler for the GObject type system
 Name:		vala
@@ -23,7 +23,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25
-%if %{with_check}
+%if %{with check}
 BuildRequires:	pkgconfig(dbus-glib-1)
 %endif
 
@@ -117,7 +117,7 @@ find %{buildroot} -name "*.la" -delete
 
 mkdir -p %{buildroot}%{_datadir}/vala/vapi
 
-%if %{with_check}
+%if %{with check}
 %check
 %make check
 %endif

@@ -113,7 +113,6 @@ from existing C libraries, allowing access from Vala programs.
 
 %install
 %makeinstall_std
-find %{buildroot} -name "*.la" -delete
 
 mkdir -p %{buildroot}%{_datadir}/vala/vapi
 

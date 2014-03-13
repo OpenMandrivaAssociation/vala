@@ -6,7 +6,11 @@
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
 
+%if "%{distepoch}" <= "2014.1"
 %bcond_without	check
+%else
+%bcond_with	check
+%endif
 
 Summary:	Compiler for the GObject type system
 Name:		vala

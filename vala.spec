@@ -15,7 +15,7 @@
 Summary:	Compiler for the GObject type system
 Name:		vala
 Version:	0.23.3
-Release:	1
+Release:	2
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
@@ -86,6 +86,7 @@ Group:		Development/Other
 Summary:	Vala development files
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-tools = %{version}-%{release}
 Provides:	vala-devel = %{version}-%{release}
 Obsoletes:	%mklibname -d vala 0
 

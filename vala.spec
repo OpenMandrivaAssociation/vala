@@ -28,6 +28,7 @@ BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25
 %if %{with check}
 BuildRequires:	pkgconfig(dbus-glib-1)
+BuildRequires:	dbus-x11
 %endif
 
 %description

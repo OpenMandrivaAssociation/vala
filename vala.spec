@@ -6,7 +6,7 @@
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
 
-%if "%{distepoch}" >= "2014.1"
+%if "%{distepoch}" >= "2014.2"
 %bcond_without	check
 %else
 %bcond_with	check

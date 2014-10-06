@@ -1,7 +1,7 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 
-%define api	0.24
+%define api	0.26
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
@@ -14,8 +14,8 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.23.3
-Release:	5
+Version:	0.26.0
+Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other

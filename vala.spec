@@ -25,6 +25,7 @@ Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc
+BuildRequires:	gobject-introspection
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25
 %if %{with check}
 BuildRequires:	pkgconfig(dbus-glib-1)

@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   vala-0.26.2.tar.xz: 538a2b1ea2ade3d706b1ef9759f83242618cb143
+sources:
+  vala-0.28.0.tar.xz: 3fd3e3a0613ccec6e6aac53a9884b3011441715f

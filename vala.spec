@@ -14,7 +14,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.28.0
+Version:	0.30.0
 Release:	2
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
@@ -56,7 +56,7 @@ type system. Vala supports modern language features as the following:
 * Exception handling [PLANNED]
 * Assisted memory management
 
-* type modules (aka. Plugins) 
+* type modules (aka. Plugins)
 
 Vala is designed to allow access to existing C libraries, especially
 GObject-based libraries, without the need for runtime bindings. Each
@@ -71,7 +71,7 @@ in C is not difficult. The Vala library only has to install the
 generated header files and C applications may then access the
 GObject-based API of the Vala library as usual. It should also be
 easily possible to write a bindings generator for access to Vala
-libraries from applications written in e.g. C# as the Vala parser is written 
+libraries from applications written in e.g. C# as the Vala parser is written
 as a library, so that all compile-time information is available when
 generating a binding.
 

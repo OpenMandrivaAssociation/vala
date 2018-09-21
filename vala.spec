@@ -152,8 +152,8 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 
 %files tools
 %{_bindir}/*gen*
-%{_bindir}/vapicheck
-%{_bindir}/vapicheck-%{api}
+#{_bindir}/vapicheck
+#{_bindir}/vapicheck-%{api}
 %{_datadir}/vala/Makefile.vapigen
 %{_libdir}/vala-%{api}
 %{_mandir}/*/*gen*

@@ -140,7 +140,7 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
-%{_mandir}/valadoc*
+%{_mandir}/man1/valadoc*
 
 %files -n %{libname}
 %{_libdir}/libvala-%{api}.so.%{major}*

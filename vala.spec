@@ -1,7 +1,7 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 
-%define api	0.36
+%define api	0.42
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
@@ -14,7 +14,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.36.12
+Version:	0.42.2
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
@@ -26,6 +26,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25
+BuildRequires:	pkgconfig(libgvc)
 %if %{with check}
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	dbus-x11
@@ -131,12 +132,15 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_bindir}/vala
 %{_bindir}/vala-%{api}
 %{_bindir}/valac
+%{_bindir}/valadoc*
 %{_bindir}/valac-%{api}
 %{_datadir}/vala-%{api}
 %dir %{_datadir}/vala
-%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/*
+%{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
+%{_mandir}/man1/valadoc*
 
 %files -n %{libname}
 %{_libdir}/libvala-%{api}.so.%{major}*
@@ -144,15 +148,19 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{devname}
 %doc ChangeLog AUTHORS
 %{_includedir}/vala-%{api}
+%{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
+%{_libdir}/libvaladoc-%{api}.so*
+%{_libdir}/valadoc/doclets/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
 %{_datadir}/aclocal/*.m4
 
 %files tools
 %{_bindir}/*gen*
-%{_bindir}/vapicheck
-%{_bindir}/vapicheck-%{api}
+#{_bindir}/vapicheck
+#{_bindir}/vapicheck-%{api}
 %{_datadir}/vala/Makefile.vapigen
 %{_libdir}/vala-%{api}
 %{_mandir}/*/*gen*
+

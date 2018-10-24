@@ -132,12 +132,15 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_bindir}/vala
 %{_bindir}/vala-%{api}
 %{_bindir}/valac
+%{_bindir}/valadoc*
 %{_bindir}/valac-%{api}
 %{_datadir}/vala-%{api}
 %dir %{_datadir}/vala
-%dir %{_datadir}/vala/vapi
+%dir %{_datadir}/vala/vapi*
+%{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
+%{_mandir}/valadoc*
 
 %files -n %{libname}
 %{_libdir}/libvala-%{api}.so.%{major}*
@@ -145,7 +148,10 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{devname}
 %doc ChangeLog AUTHORS
 %{_includedir}/vala-%{api}
+%{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
+%{_libdir}/libvaladoc-%{api}.so*
+%{_libdir}/valadoc/doclets/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
 %{_datadir}/aclocal/*.m4
@@ -157,3 +163,4 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_datadir}/vala/Makefile.vapigen
 %{_libdir}/vala-%{api}
 %{_mandir}/*/*gen*
+

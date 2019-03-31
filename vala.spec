@@ -14,7 +14,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.44.1
+Version:	0.44.2
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
@@ -115,10 +115,10 @@ from existing C libraries, allowing access from Vala programs.
 %configure2_5x \
 	--enable-vapigen
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 mkdir -p %{buildroot}%{_datadir}/vala/vapi
 

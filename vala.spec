@@ -99,7 +99,6 @@ This is the development library of the Vala programming language.
 Summary:	Tools for creating projects and bindings for %{name}
 Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
-Requires:	gnome-common
 Requires:	intltool
 Requires:	libtool
 

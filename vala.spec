@@ -150,7 +150,7 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
 %{_libdir}/libvaladoc-%{api}.so*
-%{_libdir}/valadoc/doclets/*
+#{_libdir}/valadoc/doclets/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
 %{_datadir}/aclocal/*.m4

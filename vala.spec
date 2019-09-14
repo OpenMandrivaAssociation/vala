@@ -136,7 +136,7 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_datadir}/vala-%{api}
 %dir %{_datadir}/vala
 %{_datadir}/vala/vapi/*
-%{_datadir}/valadoc/icons/*
+#{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
 %{_mandir}/man1/valadoc*

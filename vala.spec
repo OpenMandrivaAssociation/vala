@@ -5,6 +5,8 @@
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
+%define libdoc	%mklibname valadoc %{api} %{major}
+%define devdoc	%mklibname valadoc -d
 
 %if "%{distepoch}" >= "2015.2"
 %bcond_without	check
@@ -105,7 +107,7 @@ source code.
 %package -n     %{devdoc}
 Summary:        Development files for valadoc
 Group:		Development/Other
-Requires:       %{libdoc}
+Requires:       %{libdoc} = %{version}-%{release}
 Requires:	valadoc = %{version}-%{release}
 Obsoletes:	valadoc-devel < 0.38.1-4
 Provides:	valadoc-devel = %{version}-%{release}

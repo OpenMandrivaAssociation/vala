@@ -93,6 +93,15 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Valadoc is a documentation generator for generating API documentation from Vala
 source code.
 
+%package -n	%{libdoc}
+Summary:	Shared libraries for valadoc
+Group:		System/Libraries
+Conflicts:	valadoc < 0.38.1-4
+
+%description -n	%{libdoc}
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
 %package -n %{devname}
 Group:		Development/Other
 Summary:	Vala development files
@@ -168,6 +177,10 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_datadir}/valadoc-%{api}/
 %{_mandir}/man1/valadoc-%{api}.1*
 %{_mandir}/man1/valadoc.1*
+
+%files -n %{libdoc}
+%{_libdir}/libvaladoc-%{api}.so.%{major}
+%{_libdir}/libvaladoc-%{api}.so.%{major}.*
 
 %files tools
 %{_bindir}/*gen*

@@ -83,6 +83,16 @@ Summary:	Vala runtime library
 %description -n %{libname}
 This is the runtime library of the Vala programming language.
 
+
+%package -n     valadoc
+Summary:        Vala documentation generator
+Group:		Documentation
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description -n valadoc
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
 %package -n %{devname}
 Group:		Development/Other
 Summary:	Vala development files
@@ -131,12 +141,10 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_bindir}/vala
 %{_bindir}/vala-%{api}
 %{_bindir}/valac
-%{_bindir}/valadoc*
 %{_bindir}/valac-%{api}
 %{_datadir}/vala-%{api}
 %dir %{_datadir}/vala
 %{_datadir}/vala/vapi/*
-#{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
 %{_mandir}/man1/valadoc*
@@ -149,11 +157,17 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_includedir}/vala-%{api}
 %{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
-%{_libdir}/libvaladoc-%{api}.so*
-#{_libdir}/valadoc/doclets/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
 %{_datadir}/aclocal/*.m4
+
+%files -n valadoc
+%{_bindir}/valadoc
+%{_bindir}/valadoc-%{api}
+%{_libdir}/valadoc-%{api}/
+%{_datadir}/valadoc-%{api}/
+%{_mandir}/man1/valadoc-%{api}.1*
+%{_mandir}/man1/valadoc.1*
 
 %files tools
 %{_bindir}/*gen*

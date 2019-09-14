@@ -105,7 +105,7 @@ source code.
 %package -n     %{devdoc}
 Summary:        Development files for valadoc
 Group:		Development/Other
-Requires:       %{libdoc} = %{version}-%{release}
+Requires:       %{libdoc}
 Requires:	valadoc = %{version}-%{release}
 Obsoletes:	valadoc-devel < 0.38.1-4
 Provides:	valadoc-devel = %{version}-%{release}

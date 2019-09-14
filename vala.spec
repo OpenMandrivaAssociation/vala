@@ -102,6 +102,21 @@ Conflicts:	valadoc < 0.38.1-4
 Valadoc is a documentation generator for generating API documentation from Vala
 source code.
 
+%package -n     %{devdoc}
+Summary:        Development files for valadoc
+Group:		Development/Other
+Requires:       %{libdoc} = %{version}-%{release}
+Requires:	valadoc = %{version}-%{release}
+Obsoletes:	valadoc-devel < 0.38.1-4
+Provides:	valadoc-devel = %{version}-%{release}
+
+%description -n %{devdoc}
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
+This package contains development libraries and header files for
+developing applications that use valadoc.
+
 %package -n %{devname}
 Group:		Development/Other
 Summary:	Vala development files
@@ -164,7 +179,6 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{devname}
 %doc ChangeLog AUTHORS
 %{_includedir}/vala-%{api}
-%{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
@@ -181,6 +195,11 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{libdoc}
 %{_libdir}/libvaladoc-%{api}.so.%{major}
 %{_libdir}/libvaladoc-%{api}.so.%{major}.*
+
+%files -n %{devdoc}
+%{_includedir}/valadoc-%{api}/
+%{_libdir}/libvaladoc-%{api}.so
+%{_libdir}/pkgconfig/valadoc-%{api}.pc
 
 %files tools
 %{_bindir}/*gen*

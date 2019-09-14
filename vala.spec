@@ -1,10 +1,12 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 
-%define api	0.44
+%define api	0.46
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
+%define libdoc	%mklibname valadoc %{api} %{major}
+%define devdoc	%mklibname valadoc -d
 
 %if "%{distepoch}" >= "2015.2"
 %bcond_without	check
@@ -14,7 +16,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.44.7
+Version:	0.46.0
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
@@ -83,6 +85,40 @@ Summary:	Vala runtime library
 %description -n %{libname}
 This is the runtime library of the Vala programming language.
 
+
+%package -n     valadoc
+Summary:        Vala documentation generator
+Group:		Documentation
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description -n valadoc
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
+%package -n	%{libdoc}
+Summary:	Shared libraries for valadoc
+Group:		System/Libraries
+Conflicts:	valadoc < 0.38.1-4
+
+%description -n	%{libdoc}
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
+%package -n     %{devdoc}
+Summary:        Development files for valadoc
+Group:		Development/Other
+Requires:       %{libdoc} = %{version}-%{release}
+Requires:	valadoc = %{version}-%{release}
+Obsoletes:	valadoc-devel < 0.38.1-4
+Provides:	valadoc-devel = %{version}-%{release}
+
+%description -n %{devdoc}
+Valadoc is a documentation generator for generating API documentation from Vala
+source code.
+
+This package contains development libraries and header files for
+developing applications that use valadoc.
+
 %package -n %{devname}
 Group:		Development/Other
 Summary:	Vala development files
@@ -131,12 +167,10 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %{_bindir}/vala
 %{_bindir}/vala-%{api}
 %{_bindir}/valac
-%{_bindir}/valadoc*
 %{_bindir}/valac-%{api}
 %{_datadir}/vala-%{api}
 %dir %{_datadir}/vala
 %{_datadir}/vala/vapi/*
-%{_datadir}/valadoc/icons/*
 %{_mandir}/man1/valac.1*
 %{_mandir}/man1/valac-%{api}.1*
 %{_mandir}/man1/valadoc*
@@ -147,13 +181,27 @@ mkdir -p %{buildroot}%{_datadir}/vala/vapi
 %files -n %{devname}
 %doc ChangeLog AUTHORS
 %{_includedir}/vala-%{api}
-%{_includedir}/valadoc-%{api}*
 %{_libdir}/libvala-%{api}.so
-%{_libdir}/libvaladoc-%{api}.so*
-%{_libdir}/valadoc/doclets/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/devhelp/books/vala-%{api}
 %{_datadir}/aclocal/*.m4
+
+%files -n valadoc
+%{_bindir}/valadoc
+%{_bindir}/valadoc-%{api}
+%{_libdir}/valadoc-%{api}/
+%{_datadir}/valadoc-%{api}/
+%{_mandir}/man1/valadoc-%{api}.1*
+%{_mandir}/man1/valadoc.1*
+
+%files -n %{libdoc}
+%{_libdir}/libvaladoc-%{api}.so.%{major}
+%{_libdir}/libvaladoc-%{api}.so.%{major}.*
+
+%files -n %{devdoc}
+%{_includedir}/valadoc-%{api}/
+%{_libdir}/libvaladoc-%{api}.so
+%{_libdir}/pkgconfig/valadoc-%{api}.pc
 
 %files tools
 %{_bindir}/*gen*

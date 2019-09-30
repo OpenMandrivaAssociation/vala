@@ -16,7 +16,7 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.46.1
+Version:	0.46.2
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD

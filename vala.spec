@@ -144,7 +144,7 @@ from existing C libraries, allowing access from Vala programs.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure2_5x \

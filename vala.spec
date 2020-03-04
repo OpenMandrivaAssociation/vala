@@ -1,22 +1,19 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 
-%define api	0.46
+%define api	0.48
 %define major	0
 %define libname	%mklibname %{name} %{api} %major
 %define	devname	%mklibname -d %{name}
 %define libdoc	%mklibname valadoc %{api} %{major}
 %define devdoc	%mklibname valadoc -d
 
-%if "%{distepoch}" >= "2015.2"
-%bcond_without	check
-%else
 %bcond_with	check
-%endif
+
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.46.6
+Version:	0.48.0
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD

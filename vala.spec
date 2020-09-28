@@ -14,12 +14,14 @@
 Summary:	Compiler for the GObject type system
 Name:		vala
 Version:	0.50.0
-Release:	1
+Release:	2
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
 Url:		http://live.gnome.org/Vala
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
+# This patch fixing issues in Vala that causes compiling failures in other packages like Geary. Drop patch with next Vala rel 0.50.1.
+Patch0:		https://gitlab.gnome.org/GNOME/vala/-/commit/07057c8cdd164223b70eafbef8b1db096df97974.patch
 
 BuildRequires:	bison
 BuildRequires:	flex
@@ -144,7 +146,7 @@ from existing C libraries, allowing access from Vala programs.
 %autopatch -p1
 
 %build
-%configure2_5x \
+%configure \
 	--enable-vapigen
 
 %make_build

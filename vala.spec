@@ -13,18 +13,19 @@
 
 Summary:	Compiler for the GObject type system
 Name:		vala
-Version:	0.56.15
+Version:	0.56.16
 Release:	1
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
-Url:		http://live.gnome.org/Vala
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://live.gnome.org/Vala
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libgvc)
 %if %{with check}
 BuildRequires:	pkgconfig(dbus-glib-1)

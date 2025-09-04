@@ -14,7 +14,7 @@
 Summary:	Compiler for the GObject type system
 Name:		vala
 Version:	0.56.18
-Release:	1
+Release:	2
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
@@ -141,8 +141,8 @@ This package contains tools to generate Vala projects, as well as API bindings
 from existing C libraries, allowing access from Vala programs.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
+
 
 %build
 %configure \

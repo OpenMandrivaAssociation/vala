@@ -14,13 +14,14 @@
 Summary:	Compiler for the GObject type system
 Name:		vala
 Version:	0.56.18
-Release:	3
+Release:	4
 # Most files are LGPLv2.1+, curses.vapi is 2-clause BSD
 License:	LGPLv2+ and BSD
 Group:		Development/Other
 Url:		https://live.gnome.org/Vala
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
-
+# Restores graphviz support
+Patch0:		https://gitlab.archlinux.org/archlinux/packaging/packages/vala/-/raw/main/0001-valadoc-Fix-gvRenderData-to-match-graphviz-13.0.0.patch?ref_type=heads#/vala_graphviz.patch
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc

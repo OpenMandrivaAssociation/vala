@@ -22,6 +22,11 @@ Url:		https://live.gnome.org/Vala
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/vala/%{url_ver}/%{name}-%{version}.tar.xz
 # Restores graphviz support
 Patch0:		https://gitlab.archlinux.org/archlinux/packaging/packages/vala/-/raw/main/0001-valadoc-Fix-gvRenderData-to-match-graphviz-13.0.0.patch?ref_type=heads#/vala_graphviz.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xsltproc
